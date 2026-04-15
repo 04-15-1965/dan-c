@@ -2,5 +2,7 @@ packages:
   - "runtime"
   - "web"
   - "realms"
+allowBuilds:
+  esbuild: true
 
 nodeLinker: hoisted
