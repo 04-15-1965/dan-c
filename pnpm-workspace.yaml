@@ -1,0 +1,6 @@
+packages:
+  - "runtime"
+  - "web"
+  - "realms"
+
+nodeLinker: hoisted

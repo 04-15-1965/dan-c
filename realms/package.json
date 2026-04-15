@@ -1,0 +1,25 @@
+{
+  "name": "@mythic-os/realms",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./index.ts",
+  "dependencies": {
+    "@mythic-os/runtime": "workspace:*",
+    "react": "^18.2.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "default": "./index.ts"
+    },
+    "./home": {
+      "types": "./home/index.ts",
+      "default": "./home/index.ts"
+    },
+    "./home/HomeRealm": {
+      "types": "./home/HomeRealm.tsx",
+      "default": "./home/HomeRealm.tsx"
+    }
+  }
+}

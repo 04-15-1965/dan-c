@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mythic-os/runtime/*": ["runtime/src/*"],
+      "@mythic-os/realms/*": ["realms/*"],
+      "@runtime/*": ["runtime/src/*"],
+      "@realms/*": ["realms/*"]
+    }
+  }
+}

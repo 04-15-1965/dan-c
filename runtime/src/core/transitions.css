@@ -1,0 +1,203 @@
+/*
+  Stacking inside .realm-transition-shell: .bg-crossfade z-5; outgoing z-10; incoming z-20.
+  OS shell (styles.css): parallax tint z-0; .os-chrome-main z-10; fixed top/bottom bars z-20.
+*/
+
+.realm-transition-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Background crossfade helper */
+.bg-crossfade {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.52s ease;
+  opacity: 0;
+}
+
+.bg-crossfade.show {
+  opacity: 1;
+}
+
+.realm-transition-outgoing {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+}
+
+.realm-transition-outgoing--inert {
+  pointer-events: none;
+}
+
+/* Outgoing transform modifiers (GPU: transform + opacity) */
+.realm-leave--fade {
+  transform: scale(0.95);
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    filter 0.45s ease;
+}
+
+.realm-leave--slideLeft {
+  transform: translateX(-2.5rem);
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.45s ease;
+}
+
+.realm-leave--slideRight {
+  transform: translateX(2.5rem);
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.45s ease;
+}
+
+.realm-leave--zoomOut {
+  transform: scale(0.9);
+  opacity: 0;
+  filter: blur(6px);
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    filter 0.45s ease;
+}
+
+.realm-transition-incoming--hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.realm-transition-incoming-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Incoming */
+.realm-in--fade {
+  animation: realmFadeIn 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.realm-in--slideLeft {
+  animation: realmSlideLeftIn 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.realm-in--slideRight {
+  animation: realmSlideRightIn 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.realm-in--zoomOut {
+  animation: realmZoomIn 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes realmFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes realmSlideLeftIn {
+  from {
+    opacity: 0;
+    transform: translateX(2.5rem) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes realmSlideRightIn {
+  from {
+    opacity: 0;
+    transform: translateX(-2.5rem) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes realmZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.will-change-transform {
+  will-change: transform, opacity;
+}
+
+/* Instant crossfade when user prefers reduced motion (backup if CSS runs without JS shortcut). */
+@media (prefers-reduced-motion: reduce) {
+  .realm-leave--fade,
+  .realm-leave--slideLeft,
+  .realm-leave--slideRight,
+  .realm-leave--zoomOut {
+    transition: opacity 0.1s ease;
+    transform: none;
+    filter: none;
+    opacity: 0;
+  }
+
+  .realm-in--fade,
+  .realm-in--slideLeft,
+  .realm-in--slideRight,
+  .realm-in--zoomOut {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .bg-crossfade {
+    transition: opacity 0.12s ease;
+  }
+}
+
+.realm-transition-shell--reduced-motion .realm-leave--fade,
+.realm-transition-shell--reduced-motion .realm-leave--slideLeft,
+.realm-transition-shell--reduced-motion .realm-leave--slideRight,
+.realm-transition-shell--reduced-motion .realm-leave--zoomOut {
+  transition: opacity 0.1s ease;
+  transform: none;
+  filter: none;
+}
+
+.realm-transition-shell--reduced-motion .realm-in--fade,
+.realm-transition-shell--reduced-motion .realm-in--slideLeft,
+.realm-transition-shell--reduced-motion .realm-in--slideRight,
+.realm-transition-shell--reduced-motion .realm-in--zoomOut {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}

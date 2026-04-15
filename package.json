@@ -1,0 +1,10 @@
+{
+  "name": "mythic-os",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": ["runtime", "web", "realms"],
+  "scripts": {
+    "build": "npm run build -w @mythic-os/runtime && npm run build -w @mythic-os/web",
+    "dev": "npm run dev -w @mythic-os/web"
+  }
+}
