@@ -1,0 +1,38 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "rootDir": "..",
+    "outDir": "./node_modules/.tmp/tsbuild-app",
+
+    "baseUrl": "..",
+    "paths": {
+      "@/*": ["web/src/*"],
+      "@mythic-os/runtime/*": ["runtime/src/*"],
+      "@mythic-os/realms/*": ["realms/*"],
+      "@runtime/*": ["runtime/src/*"],
+      "@realms/*": ["realms/*"]
+    }
+  },
+  "include": ["src", "../realms/**/*.ts", "../realms/**/*.tsx"],
+  "references": [{ "path": "../runtime" }]
+}

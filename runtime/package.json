@@ -1,0 +1,46 @@
+{
+  "name": "@mythic-os/runtime",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js",
+      "default": "./dist/core/index.js"
+    },
+    "./core/RealmManager": {
+      "types": "./dist/core/RealmManager.d.ts",
+      "import": "./dist/core/RealmManager.js",
+      "default": "./dist/core/RealmManager.js"
+    },
+    "./core/Realm": {
+      "types": "./dist/core/Realm.d.ts",
+      "import": "./dist/core/Realm.js",
+      "default": "./dist/core/Realm.js"
+    },
+    "./Realm": {
+      "types": "./dist/core/Realm.d.ts",
+      "import": "./dist/core/Realm.js",
+      "default": "./dist/core/Realm.js"
+    },
+    "./RealmManager": {
+      "types": "./dist/core/RealmManager.d.ts",
+      "import": "./dist/core/RealmManager.js",
+      "default": "./dist/core/RealmManager.js"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.navigation-realm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.75rem;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 11rem));
+  gap: 1rem;
+  justify-content: center;
+}

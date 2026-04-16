@@ -1,0 +1,236 @@
+@import "./styles/realm-selection.css";
+
+:root {
+  --tint-from: #0f1720;
+  --tint-to: #000000;
+  --chrome-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Reset + base OS feel */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #050010;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.realm-host {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.realm-host-surface {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.realm-host-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.realm-host-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.mythic-app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mythic-app-surface {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* OS chrome shell */
+.os-chrome {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--tint-from), var(--tint-to));
+}
+
+.os-chrome-parallax-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.os-chrome-realm-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.os-chrome-realm-tint__base {
+  position: absolute;
+  inset: 0;
+}
+
+.os-chrome-realm-tint__accent {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.7s ease;
+}
+
+/* Main content above parallax tint (z-0); fixed chrome bars use z-20. */
+.os-chrome-main {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.os-chrome-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+}
+
+.os-chrome-top-bar__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.os-chrome-top-bar__realm {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.os-chrome-top-bar__clock {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.os-chrome-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 4rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+}
+
+.os-chrome-bottom-bar__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.os-chrome-bottom-bar__btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.os-chrome-bottom-bar__btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.os-chrome-bottom-bar__btn--active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.os-chrome-bottom-bar__btn:focus-visible {
+  outline: 2px solid rgba(200, 210, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.os-chrome-modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.stub-realm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.stub-realm__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.stub-realm__hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Temporary centering for early realms */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 2rem;
+}
